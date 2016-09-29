@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="solr-support" default="compile" basedir=".">
+	<description>
+    "shared-web" build file.  Web module.
+  	</description>
+
+	<property name="dir.build" value="../build" />
+	<import file="${dir.build}/global-build.xml" />
+	
+	<import file="${dir.build.libraries}/jboss-runtime.xml" />
+	<import file="${dir.build.libraries}/junit.xml"/>
+
+	<!-- ============== SOURCE/CLASSPATH CONFIGURATION =============== -->
+	<path id="classpath.dependencies.lib">
+		<!-- additional custom classpaths -->
+		<path refid="classpath.dependencies.library.jboss-runtime" />
+		<path refid="classpath.dependencies.library.junit" />
+		<pathelement location="${dir.tools.build-helpers}/_nopackage-${nsc.nopackage.version}/guava-10.0.1.jar"/>
+		<pathelement location="${dir.tools.build-helpers}/slf4j-${nsc.slf4j.version}/slf4j-api-${nsc.slf4j.version}.jar/"/>
+	</path>
+	<path id="sourcepath.addendum.external.paths">
+		<!-- additional custom sourcepaths external to this project -->
+	</path>
+	<path id="sourcepath.addendum.internal.files">
+		<!-- additional custom sourcefiles from within this project -->
+	</path>
+	<path id="sourcepath.addendum.internal.paths">
+		<!-- additional custom sourcepaths from within this project -->
+	</path>
+	<flatlist id="project.deployable.libraries.paths">
+		<!-- list workspace project artifacts to include in lib/ of this artifact -->
+	</flatlist>
+	
+	<!-- ============== CUSTOM TARGETS =============== -->
+	<target name="-custom-clean" extensionOf="-clean-extendable">
+		<!-- additional custom cleanup -->
+	</target>
+	
+	<target name="-pre-compile-init" extensionOf="-prepare-compile-extendable">
+		<!-- additional custom post-clean setup -->
+	</target>
+
+	<target name="-pre-artifact-init" extensionOf="--pre-artifact-extendable">
+		<!-- additional custom pre-artifact setup -->
+	</target>
+	
+	<target name="-post-artifact" extensionOf="--post-artifact-extendable">
+		<!-- additional custom post-artifact tasks -->
+	</target>
+
+	<import file="${dir.build}/core.xml"/>
+	
+</project>
